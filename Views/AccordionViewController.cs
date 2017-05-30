@@ -1,3 +1,4 @@
+using System;
 using UIKit;
 using UIStackViewPlayground.Helpers;
 
@@ -5,6 +6,8 @@ namespace UIStackViewPlayground.Views
 {
     public class AccordionViewController : BaseViewController
     {
+        private static readonly Random Random = new Random(DateTime.Now.Millisecond);
+
         private UIStackView _stackView;
         private UIView _visibleContent;
 
@@ -79,7 +82,7 @@ namespace UIStackViewPlayground.Views
                 Hidden = true
             };
 
-            content.HeightAnchor.ConstraintEqualTo(100).Active = true;
+            content.HeightAnchor.ConstraintEqualTo(Random.Next(40, 250)).Active = true;
             return content;
         }
     }
