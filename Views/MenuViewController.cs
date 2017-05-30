@@ -30,6 +30,7 @@ namespace UIStackViewPlayground.Views
             menu.AddArrangedSubview(GetButton("Nested stacks", typeof(NestedStacksViewController)));
             menu.AddArrangedSubview(GetButton("Toggle animated", typeof(ToggleAnimationViewController)));
             menu.AddArrangedSubview(GetButton("Accordion", typeof(AccordionViewController)));
+            menu.AddArrangedSubview(GetButton("Tree", typeof(TreeViewController)));
         }
 
         private UIButton GetButton(string title, Type controllerType)

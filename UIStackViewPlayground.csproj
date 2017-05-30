@@ -95,6 +95,7 @@
     <Compile Include="Helpers\Node.cs" />
     <Compile Include="Views\SimpleScrollViewController.cs" />
     <Compile Include="Views\ToggleAnimationViewController.cs" />
+    <Compile Include="Views\TreeViewController.cs" />
     <None Include="Info.plist" />
     <Compile Include="Views\MenuViewController.cs" />
     <Compile Include="Views\NestedStacksViewController.cs" />

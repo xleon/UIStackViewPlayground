@@ -61,7 +61,8 @@ namespace UIStackViewPlayground.Views
                     if (_visibleContent != null)
                         _visibleContent.Hidden = true;
 
-                    content.Hidden = !content.Hidden;
+                    if(!Equals(_visibleContent, content))
+                        content.Hidden = !content.Hidden;
 
                 }, () => _visibleContent = content.Hidden ? null : content);
             };

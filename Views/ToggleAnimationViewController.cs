@@ -26,7 +26,7 @@ namespace UIStackViewPlayground.Views
             addButton.SetTitle("Add view", UIControlState.Normal);
             addButton.TouchUpInside += (s, e) =>
             {
-                stack.AddArrangedSubview(GetAutoDestroyButton());
+                stack.InsertArrangedSubview(GetAutoDestroyButton(), 1);
                 UIView.Animate(0.3, () => stack.LayoutIfNeeded());
             };
             
