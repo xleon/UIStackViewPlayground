@@ -3,7 +3,7 @@ using UIStackViewPlayground.Helpers;
 
 namespace UIStackViewPlayground.Views
 {
-    public class FillEquallyViewController : BaseViewController
+    public class AnimateAxixChangeViewController : BaseViewController
     {
         public override void ViewDidLoad()
         {

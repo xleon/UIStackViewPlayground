@@ -25,12 +25,13 @@ namespace UIStackViewPlayground.Views
 
             menu.CenterIn(View);
 
-            menu.AddArrangedSubview(GetButton("Fill equally", typeof(FillEquallyViewController)));
+            menu.AddArrangedSubview(GetButton("Animate axis change", typeof(AnimateAxixChangeViewController)));
             menu.AddArrangedSubview(GetButton("Simple scroll", typeof(SimpleScrollViewController)));
             menu.AddArrangedSubview(GetButton("Nested stacks", typeof(NestedStacksViewController)));
             menu.AddArrangedSubview(GetButton("Toggle animated", typeof(ToggleAnimationViewController)));
             menu.AddArrangedSubview(GetButton("Accordion", typeof(AccordionViewController)));
             menu.AddArrangedSubview(GetButton("Tree", typeof(TreeViewController)));
+            menu.AddArrangedSubview(GetButton("Form states", typeof(FormStatesViewController)));
         }
 
         private UIButton GetButton(string title, Type controllerType)

@@ -85,7 +85,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Views\AccordionViewController.cs" />
-    <Compile Include="Views\FillEquallyViewController.cs" />
+    <Compile Include="Views\AnimateAxixChangeViewController.cs" />
     <Compile Include="Helpers\BaseViewController.cs" />
     <Compile Include="Helpers\ColorUtil.cs" />
     <Compile Include="Helpers\ConstraintUtil.cs" />
@@ -93,6 +93,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Helpers\RoundedView.cs" />
     <Compile Include="Helpers\Node.cs" />
+    <Compile Include="Views\FormStatesViewController.cs" />
     <Compile Include="Views\SimpleScrollViewController.cs" />
     <Compile Include="Views\ToggleAnimationViewController.cs" />
     <Compile Include="Views\TreeViewController.cs" />
