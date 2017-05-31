@@ -1,0 +1,27 @@
+{
+  "images": [
+    {
+      "scale": "1x",
+      "idiom": "iphone"
+    },
+    {
+      "scale": "2x",
+      "idiom": "iphone"
+    },
+    {
+      "scale": "3x",
+      "idiom": "iphone",
+      "filename": "ic_window_minimize_black_24dp.png"
+    },
+    {
+      "idiom": "iphone"
+    }
+  ],
+  "properties": {
+    "template-rendering-intent": ""
+  },
+  "info": {
+    "version": 1,
+    "author": ""
+  }
+}

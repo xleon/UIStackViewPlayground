@@ -10,6 +10,10 @@ namespace UIStackViewPlayground.Helpers
 
             if(NavigationController != null)
                 NavigationController.NavigationBar.Translucent = false;
+
+            EdgesForExtendedLayout = UIRectEdge.None;
+
+            View.BackgroundColor = UIColor.White;
         }
     }
 }

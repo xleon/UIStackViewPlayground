@@ -4,14 +4,17 @@ namespace UIStackViewPlayground.Helpers
 {
     public static class ConstraintUtil
     {
-        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, UIView target, float margin = 0)
+        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, UIView target, float margin = 0) 
+            => origin.FullSizeOf(target, new UIEdgeInsets(margin, margin, margin, margin));
+
+        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, UIView target, UIEdgeInsets edges)
         {
             var contraints = new[]
             {
-                origin.LeadingAnchor.ConstraintEqualTo(target.LeadingAnchor, margin),
-                origin.TrailingAnchor.ConstraintEqualTo(target.TrailingAnchor, -margin),
-                origin.TopAnchor.ConstraintEqualTo(target.TopAnchor, margin),
-                origin.BottomAnchor.ConstraintEqualTo(target.BottomAnchor, -margin)
+                origin.LeadingAnchor.ConstraintEqualTo(target.LeadingAnchor, edges.Left),
+                origin.TrailingAnchor.ConstraintEqualTo(target.TrailingAnchor, -edges.Right),
+                origin.TopAnchor.ConstraintEqualTo(target.TopAnchor, edges.Top),
+                origin.BottomAnchor.ConstraintEqualTo(target.BottomAnchor, -edges.Bottom)
             };
 
             NSLayoutConstraint.ActivateConstraints(contraints);

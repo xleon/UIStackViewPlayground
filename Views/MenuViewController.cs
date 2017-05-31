@@ -11,7 +11,6 @@ namespace UIStackViewPlayground.Views
             base.ViewDidLoad();
 
             NavigationItem.Title = "UIStackView Playground";
-            View.BackgroundColor = UIColor.White;
 
             var menu = new UIStackView
             {
@@ -42,8 +41,6 @@ namespace UIStackViewPlayground.Views
             {
                 var controller = (UIViewController) Activator.CreateInstance(controllerType);
                 controller.NavigationItem.Title = title;
-                controller.View.BackgroundColor = UIColor.White;
-                controller.EdgesForExtendedLayout = UIRectEdge.None;
 
                 NavigationController.PushViewController(controller, true);
             };
