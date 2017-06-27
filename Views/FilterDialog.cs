@@ -43,7 +43,8 @@ namespace UIStackViewPlayground.Views
             var scroll = new UIScrollView
             {
                 ContentInset = new UIEdgeInsets(0, 10, 0, 10),
-                ShowsHorizontalScrollIndicator = false
+                ShowsHorizontalScrollIndicator = false,
+                Bounces = false
 
             }.AddTo(_container);
 
