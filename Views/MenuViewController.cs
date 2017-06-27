@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using UIKit;
 using UIStackViewPlayground.Helpers;
 
@@ -6,6 +8,18 @@ namespace UIStackViewPlayground.Views
 {
     public class MenuViewController : BaseViewController
     {
+        private Dictionary<string, bool> _options = new Dictionary<string, bool>
+        {
+            {"Op1", false},
+            {"Op2", true},
+            {"Op3", true},
+            {"Op4", false},
+            {"Op5", false},
+            {"Op6", true},
+            {"Op7", false},
+            {"Op8", false},
+        };
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -31,18 +45,48 @@ namespace UIStackViewPlayground.Views
             menu.AddArrangedSubview(GetButton("Accordion", typeof(AccordionViewController)));
             menu.AddArrangedSubview(GetButton("Tree", typeof(TreeViewController)));
             menu.AddArrangedSubview(GetButton("Form states", typeof(FormStatesViewController)));
+
+            menu.AddArrangedSubview(GetButton("Alert dialog", action: async() =>
+            {
+                const string message = "This alert can change its visual state with a combination of 2 stacks. " +
+                                       "One vertical and one horizontal for the buttons. \n\n" +
+                                       "Click an option and see it in action";
+
+                var alert = new AlertDialogViewController("Choose an option", message, "Accept", "Cancel");
+                var result = await alert.ShowAsync(this) ? "Accepted" : "Cancelled";
+                await new AlertDialogViewController(result).ShowAsync(this, false);
+            }));
+
+            menu.AddArrangedSubview(GetButton("Filter dialog", action: async () =>
+            {
+                var filterDialog = new FilterDialog(_options);
+                var result = await filterDialog.ShowAsync(this);
+                if (result == null) return;
+
+                foreach (var option in result)
+                    Debug.WriteLine($"{option.Key}: {option.Value}");
+
+                _options = result;
+            }));
         }
 
-        private UIButton GetButton(string title, Type controllerType)
+        private UIButton GetButton(string title, Type controllerType = null, Action action = null)
         {
             var button = new UIButton(UIButtonType.System);
             button.SetTitle(title, UIControlState.Normal);
             button.TouchUpInside += (sender, args) =>
             {
-                var controller = (UIViewController) Activator.CreateInstance(controllerType);
-                controller.NavigationItem.Title = title;
+                if (action == null)
+                {
+                    var controller = (UIViewController)Activator.CreateInstance(controllerType);
+                    controller.NavigationItem.Title = title;
 
-                NavigationController.PushViewController(controller, true);
+                    NavigationController.PushViewController(controller, true);
+                }
+                else
+                {
+                    action();
+                }
             };
 
             return button;

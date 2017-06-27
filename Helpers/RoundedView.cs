@@ -4,9 +4,9 @@ namespace UIStackViewPlayground.Helpers
 {
     public class RoundedView : UIView
     {
-        public RoundedView()
+        public RoundedView(float radius = 8)
         {
-            Layer.CornerRadius = 8;
+            Layer.CornerRadius = radius;
         }
     }
 }

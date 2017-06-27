@@ -84,7 +84,10 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\BaseDialogViewController.cs" />
+    <Compile Include="Helpers\ViewExtensions.cs" />
     <Compile Include="Views\AccordionViewController.cs" />
+    <Compile Include="Views\AlertDialogViewController.cs" />
     <Compile Include="Views\AnimateAxixChangeViewController.cs" />
     <Compile Include="Helpers\BaseViewController.cs" />
     <Compile Include="Helpers\ColorUtil.cs" />
@@ -92,7 +95,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Helpers\RoundedView.cs" />
+    <Compile Include="Views\FilterDialog.cs" />
     <Compile Include="Views\FormStatesViewController.cs" />
+    <Compile Include="Views\ModalPickerViewController.cs" />
     <Compile Include="Views\SimpleScrollViewController.cs" />
     <Compile Include="Views\ToggleAnimationViewController.cs" />
     <Compile Include="Views\TreeViewController.cs" />
