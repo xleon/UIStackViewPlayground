@@ -3,7 +3,7 @@ using UIStackViewPlayground.Helpers;
 
 namespace UIStackViewPlayground.Views
 {
-    public class AnimateAxixChangeViewController : BaseViewController
+    public class AnimateAxisChangeViewController : BaseViewController
     {
         public override void ViewDidLoad()
         {

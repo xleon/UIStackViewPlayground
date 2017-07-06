@@ -1,13 +1,16 @@
+using System.Linq;
 using UIKit;
 
 namespace UIStackViewPlayground.Helpers
 {
     public static class ConstraintUtil
     {
-        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, UIView target, float margin = 0) 
-            => origin.FullSizeOf(target, new UIEdgeInsets(margin, margin, margin, margin));
+        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, 
+            UIView target, float margin = 0, bool activate = true) 
+            => origin.FullSizeOf(target, new UIEdgeInsets(margin, margin, margin, margin), activate);
 
-        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, UIView target, UIEdgeInsets edges)
+        public static NSLayoutConstraint[] FullSizeOf(this UIView origin, 
+            UIView target, UIEdgeInsets edges, bool activate = true)
         {
             origin.TranslatesAutoresizingMaskIntoConstraints = false;
             var contraints = new[]
@@ -18,11 +21,14 @@ namespace UIStackViewPlayground.Helpers
                 origin.BottomAnchor.ConstraintEqualTo(target.BottomAnchor, -edges.Bottom)
             };
 
-            NSLayoutConstraint.ActivateConstraints(contraints);
+            if(activate)
+                NSLayoutConstraint.ActivateConstraints(contraints);
+
             return contraints;
         }
 
-        public static NSLayoutConstraint[] CenterIn(this UIView origin, UIView target)
+        public static NSLayoutConstraint[] CenterIn(this UIView origin, 
+            UIView target, bool activate = true)
         {
             origin.TranslatesAutoresizingMaskIntoConstraints = false;
             var contraints = new[]
@@ -31,11 +37,14 @@ namespace UIStackViewPlayground.Helpers
                 origin.CenterYAnchor.ConstraintEqualTo(target.CenterYAnchor)
             };
 
-            NSLayoutConstraint.ActivateConstraints(contraints);
+            if (activate)
+                NSLayoutConstraint.ActivateConstraints(contraints);
+
             return contraints;
         }
 
-        public static NSLayoutConstraint[] ConstraintSize(this UIView origin, float width, float height)
+        public static NSLayoutConstraint[] ConstraintSize(this UIView origin, 
+            float width, float height, bool activate = true)
         {
             origin.TranslatesAutoresizingMaskIntoConstraints = false;
             var contraints = new[]
@@ -44,20 +53,41 @@ namespace UIStackViewPlayground.Helpers
                 origin.HeightAnchor.ConstraintEqualTo(height)
             };
 
-            NSLayoutConstraint.ActivateConstraints(contraints);
+            if (activate)
+                NSLayoutConstraint.ActivateConstraints(contraints);
+
             return contraints;
         }
 
-        public static TView ActivateConstraints<TView>(this TView origin, params NSLayoutConstraint[] constraints) 
+        public static void ChangeState(this UIView parentView, 
+            NSLayoutConstraint[] before, 
+            NSLayoutConstraint[] after, 
+            double duration = 0)
+        {
+            parentView.LayoutIfNeeded();
+
+            NSLayoutConstraint.DeactivateConstraints(before);
+            NSLayoutConstraint.ActivateConstraints(after);
+
+            if (duration > 0)
+            {
+                UIView.Animate(duration, parentView.LayoutIfNeeded);
+            }
+        }
+
+        public static TView ActivateConstraints<TView>(this TView origin, 
+            params NSLayoutConstraint[] constraints) 
             where TView : UIView
         {
             origin.TranslatesAutoresizingMaskIntoConstraints = false;
-            NSLayoutConstraint.ActivateConstraints(constraints);
+            NSLayoutConstraint.ActivateConstraints(constraints); 
             return origin;
         }
 
-        public static void SubviewsDoNotTranslateAutoresizingMaskIntoConstraints(this UIView origin)
+        public static void EnableAutoLayout(this UIView origin)
         {
+            origin.TranslatesAutoresizingMaskIntoConstraints = false;
+
             foreach (var view in origin.Subviews)
             {
                 view.TranslatesAutoresizingMaskIntoConstraints = false;

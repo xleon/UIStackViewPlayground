@@ -38,7 +38,8 @@ namespace UIStackViewPlayground.Views
 
             menu.CenterIn(View);
 
-            menu.AddArrangedSubview(GetButton("Animate axis change", typeof(AnimateAxixChangeViewController)));
+            menu.AddArrangedSubview(GetButton("Anchor constraints POC", typeof(AnchorPocViewController)));
+            menu.AddArrangedSubview(GetButton("Animate axis change", typeof(AnimateAxisChangeViewController)));
             menu.AddArrangedSubview(GetButton("Simple scroll", typeof(SimpleScrollViewController)));
             menu.AddArrangedSubview(GetButton("Nested stacks", typeof(NestedStacksViewController)));
             menu.AddArrangedSubview(GetButton("Toggle animated", typeof(ToggleAnimationViewController)));

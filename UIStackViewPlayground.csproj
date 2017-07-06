@@ -88,7 +88,8 @@
     <Compile Include="Helpers\ViewExtensions.cs" />
     <Compile Include="Views\AccordionViewController.cs" />
     <Compile Include="Views\AlertDialogViewController.cs" />
-    <Compile Include="Views\AnimateAxixChangeViewController.cs" />
+    <Compile Include="Views\AnchorPocViewController.cs" />
+    <Compile Include="Views\AnimateAxisChangeViewController.cs" />
     <Compile Include="Helpers\BaseViewController.cs" />
     <Compile Include="Helpers\ColorUtil.cs" />
     <Compile Include="Helpers\ConstraintUtil.cs" />
