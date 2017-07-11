@@ -6,7 +6,8 @@ namespace UIStackViewPlayground.Views
 {
     public class AccordionViewController : BaseViewController
     {
-        private static readonly Random Random = new Random(DateTime.Now.Millisecond);
+        private static readonly Random Random 
+            = new Random(DateTime.Now.Millisecond);
 
         private UIStackView _stackView;
         private UIView _visibleContent;
@@ -24,19 +25,25 @@ namespace UIStackViewPlayground.Views
                 Spacing = 1
             };
 
-            var scroll = new UIScrollView { TranslatesAutoresizingMaskIntoConstraints = false };
+            var scroll = new UIScrollView();
             Add(scroll);
 
             scroll.AddSubview(_stackView);
             scroll.FullSizeOf(View);
+            scroll.EnableAutoLayout();
 
             _stackView.FullSizeOf(scroll);
-            _stackView.WidthAnchor.ConstraintEqualTo(scroll.WidthAnchor).Active = true;
+            _stackView.WidthAnchor
+                .ConstraintEqualTo(scroll.WidthAnchor)
+                .Active = true;
 
             for (var i = 0; i < 25; i++)
             {
-                _stackView.AddArrangedSubview(GetButton($"Category {i + 1}", i));
-                _stackView.AddArrangedSubview(GetContent($"Child of category {i + 1}", i + 100));
+                _stackView.AddArrangedSubview(
+                    GetButton($"Category {i + 1}", i));
+
+                _stackView.AddArrangedSubview(
+                    GetContent($"Child of category {i + 1}", i + 100));
             }
         }
 
@@ -83,7 +90,10 @@ namespace UIStackViewPlayground.Views
                 Hidden = true
             };
 
-            content.HeightAnchor.ConstraintEqualTo(Random.Next(40, 250)).Active = true;
+            content.HeightAnchor
+                .ConstraintEqualTo(Random.Next(40, 250))
+                .Active = true;
+
             return content;
         }
     }

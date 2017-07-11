@@ -45,8 +45,7 @@ namespace UIStackViewPlayground.Views
             menu.AddArrangedSubview(GetButton("Toggle animated", typeof(ToggleAnimationViewController)));
             menu.AddArrangedSubview(GetButton("Accordion", typeof(AccordionViewController)));
             menu.AddArrangedSubview(GetButton("Tree", typeof(TreeViewController)));
-            menu.AddArrangedSubview(GetButton("Form states", typeof(FormStatesViewController)));
-
+            
             menu.AddArrangedSubview(GetButton("Alert dialog", action: async() =>
             {
                 const string message = "This alert can change its visual state with a combination of 2 stacks. " +

@@ -110,7 +110,12 @@ namespace UIStackViewPlayground.Views
             view.Layer.BorderColor = UIColor.Gray.CGColor;
             view.HeightAnchor.ConstraintEqualTo(110).Active = true;
 
-            var label = new UILabel {Text = title, TranslatesAutoresizingMaskIntoConstraints = false};
+            var label = new UILabel
+            {
+                Text = title,
+                TranslatesAutoresizingMaskIntoConstraints = false
+            };
+
             view.Add(label);
             view.Add(stackView);
 

@@ -35,10 +35,16 @@ namespace UIStackViewPlayground.Views
 
         private static UIButton GetAutoDestroyButton()
         {
-            var button = new UIButton {BackgroundColor = ColorUtil.GetRandomColor(true), ClipsToBounds = true};
+            var button = new UIButton
+            {
+                BackgroundColor = ColorUtil.GetRandomColor(true),
+                ClipsToBounds = true
+            };
+
             button.SetTitle("Destroy", UIControlState.Normal);
-            button.TouchUpInside += (sender, args) 
-                => UIView.Animate(0.3, () => button.Hidden = true, button.RemoveFromSuperview);
+            button.TouchUpInside += (sender, args) => 
+                UIView.Animate(0.3, () => 
+                    button.Hidden = true, button.RemoveFromSuperview);
 
             return button;
         }
